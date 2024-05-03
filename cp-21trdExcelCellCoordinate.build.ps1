@@ -7,9 +7,12 @@ task Test {
     # Import-Module Pester
     # Invoke-Pester .\cp-21trdExcelCellCoordinate.test.ps1
 }
+
 task Release {
     Set-PsEnv
-    Publish-PSResource -Path .\cp-21trdExcelCellCoordinate.psd1 -Repository PSGallery -ApiKey $env:PSGALLERY_API_KEY
+    $valTest = $env:PSGALLERY_API_KEY
+    Write-Output( $valTest)
+    Publish-PSResource -Path .\cp-21trdExcelCellCoordinate.psd1 -Repository PSGallery -ApiKey $valTest
 }
 
-task . Test
+task . Test, Release
