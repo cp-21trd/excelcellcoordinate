@@ -12,7 +12,11 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: build
+      - name: Install Module
         shell: pwsh
-        run: |
-         Invoke-Build .
+        run: | 
+          Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+          Install-Module PSScriptAnalyzer, Pester, InvokeBuild -Scope CurrentUser
+      - name: Invoke-Build
+        shell: pwsh
+        run: Invoke-Build .
