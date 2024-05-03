@@ -1,4 +1,4 @@
-name: Mon Workflow
+name: Build + Test
 
 on: [push]
 
@@ -12,6 +12,6 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
-
-        run: echo Hello, world!
+      - name: build
+        shell: pwsh
+        run: Invoke-Build .
